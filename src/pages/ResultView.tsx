@@ -1,9 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 export default function ResultView() {
-    return (
-        <>
-        <div>결과</div>
-        </>
-    )
+  const { key } = useParams();
+
+  return (
+    <>
+      <div>결과</div>
+      <h1>{key}</h1>
+    </>
+  );
 }
