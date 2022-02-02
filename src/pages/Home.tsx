@@ -17,7 +17,7 @@ export default function Home() {
           navigate("/question");
         }}
       >
-        Let's go choice!
+        Let's go!
       </button>
     </>
   );

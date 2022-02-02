@@ -15,8 +15,8 @@ export default function QuestionView() {
   const [curOrder, setCurOrder] = useState<number>(order[order.length - 1]);
   const [answer, setAnswer] = useState({});
 
-  console.log(`:::::order::::${order}`);
-  console.log(`:::::curOrder::::${curOrder}`);
+  // console.log(`:::::order::::${order}`);
+  // console.log(`:::::curOrder::::${curOrder}`);
 
   useEffect(() => {
     if (order.length !== 0) {
@@ -24,20 +24,18 @@ export default function QuestionView() {
       setCurOrder(pick);
     } else {
       const targetMovie = findMovie(answer);
-
-      console.log(targetMovie);
       navigate(`/result/${targetMovie}`);
     }
   }, [order, answer]);
 
   const handleChoice = (num: number): void => {
     answers[curOrder] = num;
-    console.log(`::::현재선택::::${JSON.stringify(answers)}`);
+    // console.log(`::::현재선택::::${JSON.stringify(answers)}`);
     order.pop();
     setAnswer({ ...answer, ...answers });
   };
 
-  console.log(`:::::선택모음::::${JSON.stringify(answer)}`);
+  // console.log(`:::::선택모음::::${JSON.stringify(answer)}`);
 
   return (
     <>
