@@ -6,7 +6,12 @@
 }
 
 body {
-  width: 424px;
-  margin-left: auto;
-  margin-right: auto;
+  background: -webkit-linear-gradient(135deg, #5f44d8 #25b2ea);
+  background: -moz-linear-gradient(135deg, #5f44d8, #25b2ea);
+  background: -o-linear-gradient(135deg, #5f44d8, #25b2ea);
+  background: linear-gradient(135deg, #5f44d8, #25b2ea);
+}
+
+a {
+  text-decoration: none;
 }

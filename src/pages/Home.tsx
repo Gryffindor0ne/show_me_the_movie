@@ -1,24 +1,83 @@
-import React from "react";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
+const Section = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+`;
+const Title = styled.div`
+  font-size: 4.5rem;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 0.5rem;
+`;
+
+const Text = styled.div`
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 0.8rem;
+`;
+
+const CommentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+`;
+
+const Image = styled.img`
+  display: flex;
+  width: 40vw;
+  height: 70vh;
+`;
+
+const Btn = styled.button`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 25px;
+  background: #2196f3;
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  width: 15rem;
+  height: 2.7rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0px 3px 3px 1px black;
+  :hover {
+    background: #1a237e;
+    color: white;
+  }
+`;
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <div>SHOW ME THE MOVIE</div>
-      <div>지금 뭘 볼까? 고민하는 이 순간!</div>
-      <div>내 최애 리스트 중에서</div>
-      <div>지금 원하는 영화</div>
-      <div>그 하나를 지금 골라봅시다!</div>
-      <img src="cinema.svg" width="400" height="500"></img>
-      <button
-        onClick={() => {
-          navigate("/question");
-        }}
-      >
-        Let's go!
-      </button>
-    </>
+    <Section>
+      <CommentBox>
+        <Title>SHOW ME</Title>
+        <Title>THE MOVIE</Title>
+        <Text>지금 뭘 볼까?</Text>
+        <Text>고민하는 이 순간!</Text>
+        <Text>최애 리스트 중에서</Text>
+        <Text>하나를 골라보자!</Text>
+        <Btn
+          onClick={() => {
+            navigate("/question");
+          }}
+        >
+          Let's go!
+        </Btn>
+      </CommentBox>
+      <Image src="cinema.svg"></Image>
+    </Section>
   );
 }
