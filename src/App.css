@@ -12,6 +12,17 @@ body {
   background: linear-gradient(135deg, #5f44d8, #25b2ea);
 }
 
+@font-face {
+  font-family: "EliceDigitalBaeum_Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+
 a {
   text-decoration: none;
+  color: #1e88e5;
+  font-family: "EliceDigitalBaeum_Regular";
 }

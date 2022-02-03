@@ -10,16 +10,25 @@ const Section = styled.section`
   margin-left: auto;
   margin-right: auto;
 `;
+
+const TitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.3rem;
+`;
+
 const Title = styled.div`
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   font-family: "Roboto", sans-serif;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 `;
 
 const Text = styled.div`
-  font-size: 1.5rem;
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  font-family: "EliceDigitalBaeum_Regular";
+  margin-bottom: 0.5rem;
 `;
 
 const CommentBox = styled.div`
@@ -32,8 +41,8 @@ const CommentBox = styled.div`
 
 const Image = styled.img`
   display: flex;
-  width: 40vw;
-  height: 70vh;
+  width: 30vw;
+  height: 60vh;
 `;
 
 const Btn = styled.button`
@@ -63,8 +72,10 @@ export default function Home() {
   return (
     <Section>
       <CommentBox>
-        <Title>SHOW ME</Title>
-        <Title>THE MOVIE</Title>
+        <TitleBox>
+          <Title>SHOW ME</Title>
+          <Title>THE MOVIE</Title>
+        </TitleBox>
         <Text>지금 뭘 볼까?</Text>
         <Text>고민하는 이 순간!</Text>
         <Text>최애 리스트 중에서</Text>

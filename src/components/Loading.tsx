@@ -9,23 +9,47 @@ const IndicatorContainer = styled.div`
 `;
 
 const Indicator = styled.div`
-  width: 90px;
-  height: 90px;
+  width: 200px;
+  height: 200px;
+  background-color: skyblue;
   border-radius: 50%;
-  border: 11px solid #64dd17;
-  border-color: #64dd17 transparent transparent;
-  animation: spin 0.8s linear infinite;
-  margin-bottom: 5rem;
+  position: relative;
+  box-shadow: inset 0 0 30px 0 rgba(0, 0, 0, 0.5),
+    0 4px 10px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 
-  @keyframes spin {
+  :before,
+  :after {
+    content: "";
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    top: -150px;
+    background-color: #fff;
+  }
+  :before {
+    border-radius: 45%;
+    background: rgba(255, 255, 255, 0.7);
+    animation: wave 5s linear infinite;
+  }
+  :after {
+    border-radius: 35%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: wave 5s linear infinite;
+  }
+  @keyframes wave {
+    0% {
+      transform: rotate(0);
+    }
     100% {
-      transform: rotate(260deg);
+      transform: rotate(360deg);
     }
   }
 `;
 
 const Message = styled.div`
   font-size: 1.5rem;
+  margin-top: 2rem;
 `;
 
 export default function LoadingIndicator(): JSX.Element {
@@ -33,7 +57,7 @@ export default function LoadingIndicator(): JSX.Element {
     <>
       <IndicatorContainer>
         <Indicator></Indicator>
-        <Message>결과를 기다리는 중입니다...</Message>
+        <Message>결과를 기다리는 중입니다.</Message>
       </IndicatorContainer>
     </>
   );

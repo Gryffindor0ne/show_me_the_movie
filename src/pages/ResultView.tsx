@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import LoadingIndicator from "../components/Loading";
+import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 
-const Section = styled.section`
+const OuterContainer = styled.section`
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   border-radius: 25px;
@@ -15,44 +15,82 @@ const Section = styled.section`
   margin: 100px;
   margin-left: auto;
   margin-right: auto;
-  background-color: white;
+  background-color: skyblue;
   background-size: 5px 5px;
   background-image: linear-gradient(to right, #eeeeee 1px, transparent 1px),
     linear-gradient(to bottom, #eeeeee 1px, transparent 1px);
+  /* background: linear-gradient(to left, #d7dde8, #757f9a); */
 `;
 
-const Poster = styled.div`
-  display: flex;
+const InnerContainer = styled.section`
+  margin: 1rem;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-rows: repeat(3, 8rem);
+  grid-template-columns: repeat(3, 17rem);
 `;
 
-const MovieContent = styled.div`
+const Header = styled.div`
+  grid-column: 1/4;
+  grid-row: 1/2;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: 30rem;
+  border-radius: 0.8rem;
+  border-top: 5px solid #1e88e5;
+  background-color: white;
+  box-shadow: 5px 5px 20px #6d6b6b6b;
 `;
 
 const TitleBox = styled.div`
+  grid-column: 1/3;
+  grid-row: 1/2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-  margin: 2rem;
 `;
 
+const MainTitle = styled.span`
+  font-size: 2.5rem;
+`;
+
+const Poster = styled.div`
+  grid-column: 1/2;
+  grid-row: 2/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.8rem;
+  box-shadow: 5px 5px 20px #6d6b6b6b;
+  border-top: 5px solid #1e88e5;
+  background-color: white;
+`;
 const MovieDetail = styled.div`
+  grid-column: 2/4;
+  grid-row: 2/4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   font-size: 1rem;
+  border-radius: 0.8rem;
+  box-shadow: 5px 5px 20px #6d6b6b6b;
+  border-top: 5px solid #1e88e5;
+  background-color: white;
+  padding-left: 2rem;
 `;
 
-const LinkBox = styled.div`
+const RatingBox = styled.div`
   display: flex;
-  margin-top: 2rem;
+`;
+const StarRating = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1e88e5;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  margin-bottom: 0.8rem;
 `;
 
 const Link = styled.span`
@@ -85,6 +123,19 @@ const Link = styled.span`
   }
 `;
 
+const Contents = styled.h3`
+  font-family: "EliceDigitalBaeum_Regular";
+  margin-bottom: 0.8rem;
+`;
+
+const BtnContainer = styled.div`
+  grid-column: 1/4;
+  grid-row: 4/5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Btn = styled.button`
   cursor: pointer;
   display: flex;
@@ -92,8 +143,8 @@ const Btn = styled.button`
   align-items: center;
   border: none;
   border-radius: 25px;
-  color: white;
-  background: #2196f3;
+
+  background: linear-gradient(to left, #b5c4df, #30498e);
   font-size: 1.2rem;
   width: 12rem;
   height: 2.5rem;
@@ -101,7 +152,8 @@ const Btn = styled.button`
   margin-bottom: 3rem;
   box-shadow: 0px 3px 3px 1px black;
   :hover {
-    background: #1a237e;
+    background: #30498e;
+    color: white;
   }
 `;
 
@@ -125,6 +177,18 @@ export default function ResultView() {
   // 중복요소 떄문에 구현
   const [title, pubDate, country] = key?.split("_") as string[];
   console.log(title, pubDate, country);
+
+  const star = [<IoMdStar />, <IoMdStarHalf />];
+  const rating: number = Math.round(+(movieInfo?.userRating ?? "") * 1);
+  console.log(rating);
+
+  const curStar = [];
+  for (let i = 1; i <= rating / 2; i++) {
+    curStar.push(star[0]);
+  }
+  if (rating % 2 !== 0) {
+    curStar.push(star[1]);
+  }
 
   useEffect(() => {
     const getMovieData = async () => {
@@ -169,39 +233,46 @@ export default function ResultView() {
       {isLoading ? (
         <LoadingIndicator />
       ) : (
-        <Section>
-          <Poster>
-            <img src={movieInfo?.image} />
-          </Poster>
-          <MovieContent>
-            <TitleBox>
-              <h1>{title}</h1>
-              <h3>{movieInfo?.subtitle}</h3>
-            </TitleBox>
-            <MovieDetail>
-              <h3>
-                배우 : {movieInfo?.actor.split("|").join(", ").slice(0, -2)}
-              </h3>
-              <h3>감독 : {movieInfo?.director.split("|").slice(0, -1)}</h3>
-              <h3>개봉연도 : {movieInfo?.pubDate}</h3>
-              <h3>관객 평점 : {movieInfo?.userRating}</h3>
-            </MovieDetail>
-            <LinkBox>
+        <OuterContainer>
+          <InnerContainer>
+            <Header>
+              <TitleBox>
+                <MainTitle>{title}</MainTitle>
+                <h3>{movieInfo?.subtitle}</h3>
+              </TitleBox>
               <Link>
                 <a href={movieInfo?.link} target="_blank" rel="noreferrer">
-                  상세 페이지
+                  더 자세한 정보를 원한다면
                 </a>
               </Link>
-            </LinkBox>
-          </MovieContent>
-          <Btn
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <span>다른 영화 보기</span>
-          </Btn>
-        </Section>
+            </Header>
+            <Poster>
+              <img src={movieInfo?.image} />
+            </Poster>
+            <MovieDetail>
+              <Contents>
+                배우 : {movieInfo?.actor.split("|").join(", ").slice(0, -2)}
+              </Contents>
+              <Contents>
+                감독 : {movieInfo?.director.split("|").slice(0, -1)}
+              </Contents>
+              <Contents>개봉연도 : {movieInfo?.pubDate}</Contents>
+              <RatingBox>
+                <Contents>관객 평점 : {movieInfo?.userRating}</Contents>
+                <StarRating>{curStar.map((star) => star)}</StarRating>
+              </RatingBox>
+            </MovieDetail>
+            <BtnContainer>
+              <Btn
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                <span>다른 영화 보기</span>
+              </Btn>
+            </BtnContainer>
+          </InnerContainer>
+        </OuterContainer>
       )}
     </>
   );
