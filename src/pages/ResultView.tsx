@@ -11,23 +11,24 @@ const OuterContainer = styled.section`
   align-items: center;
   border-radius: 25px;
   width: 60vw;
-  height: 80vh;
-  margin: 100px;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  background-color: skyblue;
-  background-size: 5px 5px;
-  background-image: linear-gradient(to right, #eeeeee 1px, transparent 1px),
-    linear-gradient(to bottom, #eeeeee 1px, transparent 1px);
-  /* background: linear-gradient(to left, #d7dde8, #757f9a); */
 `;
 
 const InnerContainer = styled.section`
   margin: 1rem;
   display: grid;
-  grid-gap: 1.5rem;
-  grid-template-rows: repeat(3, 8rem);
+  grid-gap: 1rem;
+  grid-template-rows: repeat(3, 9rem);
   grid-template-columns: repeat(3, 17rem);
+  border-radius: 0.8rem;
+  border-top: 10px solid #009688;
+  background-color: white;
+  box-shadow: 5px 5px 20px #6d6b6b6b;
+  background-size: 6px 6px;
+  background-image: linear-gradient(to right, #eeeeee 1px, transparent 1px),
+    linear-gradient(to bottom, #eeeeee 1px, transparent 1px);
 `;
 
 const Header = styled.div`
@@ -36,10 +37,6 @@ const Header = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-radius: 0.8rem;
-  border-top: 5px solid #1e88e5;
-  background-color: white;
-  box-shadow: 5px 5px 20px #6d6b6b6b;
 `;
 
 const TitleBox = styled.div`
@@ -48,10 +45,14 @@ const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-bottom: 4px solid #009688;
+  margin-top: 2rem;
+  padding-bottom: 0.4rem;
 `;
 
 const MainTitle = styled.span`
   font-size: 2.5rem;
+  margin-bottom: 0rem;
 `;
 
 const Poster = styled.div`
@@ -60,10 +61,13 @@ const Poster = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 5rem;
+`;
+
+const PosterImg = styled.img`
   border-radius: 0.8rem;
-  box-shadow: 5px 5px 20px #6d6b6b6b;
-  border-top: 5px solid #1e88e5;
-  background-color: white;
+  width: 11rem;
+  height: 14rem;
 `;
 const MovieDetail = styled.div`
   grid-column: 2/4;
@@ -73,11 +77,8 @@ const MovieDetail = styled.div`
   justify-content: center;
   align-items: flex-start;
   font-size: 1rem;
-  border-radius: 0.8rem;
-  box-shadow: 5px 5px 20px #6d6b6b6b;
-  border-top: 5px solid #1e88e5;
-  background-color: white;
-  padding-left: 2rem;
+  padding-left: 3rem;
+  padding-right: 5rem;
 `;
 
 const RatingBox = styled.div`
@@ -87,8 +88,8 @@ const StarRating = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #1e88e5;
-  font-size: 1.2rem;
+  color: #ffa578;
+  font-size: 1.5rem;
   margin-left: 1rem;
   margin-bottom: 0.8rem;
 `;
@@ -107,7 +108,7 @@ const Link = styled.span`
     left: 0;
     width: 100%;
     height: 0.2em;
-    background-color: #1a237e;
+    background-color: #009688;
     opacity: 0;
     transition: opacity 300ms, transform 300ms;
   }
@@ -119,21 +120,38 @@ const Link = styled.span`
   &:hover::after,
   :focus::after {
     transform: scale(1);
-    color: #1a237e;
+    color: #009688;
   }
 `;
 
 const Contents = styled.h3`
   font-family: "EliceDigitalBaeum_Regular";
+  color: #8d6e63;
   margin-bottom: 0.8rem;
 `;
 
+const SmallImageContainer = styled.div`
+  grid-column: 1/2;
+  grid-row: 4/5;
+`;
+
+const SmallImg = styled.img`
+  cursor: pointer;
+  width: 10rem;
+  height: 6rem;
+  border: none;
+  margin-bottom: 1.5rem;
+  margin-left: 6rem;
+`;
+
 const BtnContainer = styled.div`
-  grid-column: 1/4;
+  grid-column: 2/3;
   grid-row: 4/5;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1rem;
 `;
 
 const Btn = styled.button`
@@ -143,18 +161,34 @@ const Btn = styled.button`
   align-items: center;
   border: none;
   border-radius: 25px;
+  background: #009688;
+  color: black;
 
-  background: linear-gradient(to left, #b5c4df, #30498e);
   font-size: 1.2rem;
   width: 12rem;
   height: 2.5rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   box-shadow: 0px 3px 3px 1px black;
   :hover {
-    background: #30498e;
+    background: #1a237e;
     color: white;
+    font-weight: bold;
   }
+`;
+
+const ImageContainer = styled.div`
+  grid-column: 3/4;
+  grid-row: 3/5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Image = styled.img`
+  display: flex;
+  width: 16rem;
+  height: 18rem;
+  padding-right: 1rem;
 `;
 
 type MovieInfo = {
@@ -179,7 +213,7 @@ export default function ResultView() {
   console.log(title, pubDate, country);
 
   const star = [<IoMdStar />, <IoMdStarHalf />];
-  const rating: number = Math.round(+(movieInfo?.userRating ?? "") * 1);
+  const rating: number = Math.round(parseInt(movieInfo?.userRating ?? "0"));
   console.log(rating);
 
   const curStar = [];
@@ -228,6 +262,18 @@ export default function ResultView() {
     getMovieData();
   }, [key]);
 
+  const copyClipBoard = () => {
+    const copyUrl = document.location.href;
+    navigator.clipboard
+      .writeText(`${copyUrl}`)
+      .then(() => {
+        alert("링크가 복사되었습니다!");
+      })
+      .catch(() => {
+        alert("링크 복사가 실패하였습니다!");
+      });
+  };
+
   return (
     <>
       {isLoading ? (
@@ -240,14 +286,9 @@ export default function ResultView() {
                 <MainTitle>{title}</MainTitle>
                 <h3>{movieInfo?.subtitle}</h3>
               </TitleBox>
-              <Link>
-                <a href={movieInfo?.link} target="_blank" rel="noreferrer">
-                  더 자세한 정보를 원한다면
-                </a>
-              </Link>
             </Header>
             <Poster>
-              <img src={movieInfo?.image} />
+              <PosterImg src={movieInfo?.image} />
             </Poster>
             <MovieDetail>
               <Contents>
@@ -259,18 +300,40 @@ export default function ResultView() {
               <Contents>개봉연도 : {movieInfo?.pubDate}</Contents>
               <RatingBox>
                 <Contents>관객 평점 : {movieInfo?.userRating}</Contents>
-                <StarRating>{curStar.map((star) => star)}</StarRating>
+                <StarRating>
+                  {curStar.map((star, idx) => (
+                    <span key={idx}>{star}</span>
+                  ))}
+                </StarRating>
               </RatingBox>
+              <Link>
+                <a href={movieInfo?.link} target="_blank" rel="noreferrer">
+                  더 자세한 정보를 원한다면
+                </a>
+              </Link>
             </MovieDetail>
+            <SmallImageContainer>
+              <SmallImg src="../video_files.svg" />
+            </SmallImageContainer>
             <BtnContainer>
               <Btn
                 onClick={() => {
                   navigate("/");
                 }}
               >
-                <span>다른 영화 보기</span>
+                <span>테스트 다시하기</span>
+              </Btn>
+              <Btn
+                onClick={() => {
+                  copyClipBoard();
+                }}
+              >
+                <span>링크 저장하기</span>
               </Btn>
             </BtnContainer>
+            <ImageContainer>
+              <Image src="../Film_rolls.svg" />
+            </ImageContainer>
           </InnerContainer>
         </OuterContainer>
       )}

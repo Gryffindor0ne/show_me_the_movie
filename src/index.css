@@ -1,8 +1,12 @@
 body {
-  margin: 0;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background: -webkit-linear-gradient(135deg, #5f44d8 #25b2ea);
+  background: -moz-linear-gradient(135deg, #5f44d8, #25b2ea);
+  background: -o-linear-gradient(135deg, #5f44d8, #25b2ea);
+  background: linear-gradient(135deg, #5f44d8, #25b2ea);
 }
 
 code {

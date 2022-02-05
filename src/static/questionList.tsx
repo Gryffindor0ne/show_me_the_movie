@@ -25,7 +25,7 @@ export const questionList: QuestionSet[] = [
   },
   {
     id: 3,
-    question: "영화 선택의 가장 주요한 기준은 어떤 건가요?",
+    question: "영화 선택의 가장 주요한 기준은?",
     answer: {
       1: "감독",
       2: "작품성",

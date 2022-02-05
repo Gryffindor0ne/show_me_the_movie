@@ -3,6 +3,25 @@ import { makeOrder } from "../utils/makeOrder";
 import { QuestionSet, questionList } from "../static/questionList";
 import styled from "styled-components";
 
+const QuestionContainer = styled.section`
+  margin: 1rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: repeat(4, 9rem);
+  grid-template-columns: repeat(1, 28rem);
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const ProgressBarContainer = styled.div`
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const Number = styled.div`
   font-weight: bold;
   margin-top: 4rem;
@@ -62,6 +81,13 @@ const ProgressBar = styled.div<ProBar>`
   background-color: ${(props: ProBar) => props.back};
 `;
 
+const QuestionBox = styled.div`
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const Text = styled.div`
   font-size: 1.7rem;
   /* color: #f5f5f5; */
@@ -69,8 +95,11 @@ const Text = styled.div`
 `;
 
 const BtnContainer = styled.div`
+  grid-row: 3/5;
   display: flex;
-  margin: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Btn = styled.button`
@@ -81,10 +110,10 @@ const Btn = styled.button`
   align-items: center;
   border: none;
   border-radius: 25px;
-  width: 14rem;
-  height: 3rem;
+  width: 15rem;
+  height: 2.9rem;
   font-size: 1rem;
-  margin 1rem;
+  margin: 1rem;
   :hover {
     color: white;
     background-color: #1a237e;
@@ -153,13 +182,19 @@ export default function Question({
   }, [orderLen]);
 
   return (
-    <>
-      <Number>{orderLen !== 0 ? `${3 - (orderLen - 1)} / 3` : "3 / 3"}</Number>
-      <Progress>
-        <ProgressBar {...curProgress}></ProgressBar>
-      </Progress>
-      <h1>Q.</h1>
-      <Text>{qt?.question}</Text>
+    <QuestionContainer>
+      <ProgressBarContainer>
+        <Number>
+          {orderLen !== 0 ? `${3 - (orderLen - 1)} / 3` : "3 / 3"}
+        </Number>
+        <Progress>
+          <ProgressBar {...curProgress}></ProgressBar>
+        </Progress>
+      </ProgressBarContainer>
+      <QuestionBox>
+        <h1>Q.</h1>
+        <Text>{qt?.question}</Text>
+      </QuestionBox>
       <BtnContainer>
         {asOrder.map((curOrder: number, i: number) => (
           <Btn key={i} onClick={() => handleChoice(curOrder)}>
@@ -167,6 +202,6 @@ export default function Question({
           </Btn>
         ))}
       </BtnContainer>
-    </>
+    </QuestionContainer>
   );
 }
