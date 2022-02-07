@@ -10,8 +10,7 @@ const Section = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 25px;
-  width: 70vw;
+  width: 100vw;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;

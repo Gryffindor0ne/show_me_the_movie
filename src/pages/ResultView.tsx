@@ -4,24 +4,36 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import LoadingIndicator from "../components/Loading";
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
+import { theme, ThemeSet } from "../theme";
 
-const OuterContainer = styled.section`
+const OuterContainer = styled.section<ThemeSet>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 25px;
-  width: 60vw;
-  height: 100vh;
+  width: 100vw;
   margin-left: auto;
   margin-right: auto;
+
+  @media ${(props) => props.minimum} {
+    min-height: 1000px;
+  }
+  @media ${(props) => props.mobile} {
+    min-height: 1200px;
+  }
+
+  @media ${(props) => props.tablet} {
+    min-height: 800px;
+  }
+  @media ${(props) => props.desktop} {
+    height: 100vh;
+  }
 `;
 
-const InnerContainer = styled.section`
+const InnerContainer = styled.section<ThemeSet>`
   margin: 1rem;
   display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: repeat(3, 9rem);
-  grid-template-columns: repeat(3, 17rem);
+  grid-template-rows: repeat(7, 10rem);
+  grid-template-columns: repeat(1, 19rem);
   border-radius: 0.8rem;
   border-top: 10px solid #009688;
   background-color: white;
@@ -29,74 +41,313 @@ const InnerContainer = styled.section`
   background-size: 6px 6px;
   background-image: linear-gradient(to right, #eeeeee 1px, transparent 1px),
     linear-gradient(to bottom, #eeeeee 1px, transparent 1px);
+
+  @media ${(props) => props.minimum} {
+    grid-template-rows: repeat(6, 10rem);
+    grid-template-columns: repeat(1, 16rem);
+  }
+
+  @media ${(props) => props.tablet} {
+    grid-template-rows: repeat(3, 8rem);
+    grid-template-columns: repeat(3, 15rem);
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-template-rows: repeat(3, 8rem);
+    grid-template-columns: repeat(3, 17.5rem);
+  }
 `;
 
-const Header = styled.div`
-  grid-column: 1/4;
+const Header = styled.div<ThemeSet>`
   grid-row: 1/2;
+  grid-column: 1/1;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+
+  @media ${(props) => props.tablet} {
+    grid-row: 1/2;
+    grid-column: 1/4;
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 1/2;
+    grid-column: 1/4;
+  }
 `;
 
-const TitleBox = styled.div`
-  grid-column: 1/3;
+const TitleBox = styled.div<ThemeSet>`
   grid-row: 1/2;
+  grid-column: 1/1;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-bottom: 4px solid #009688;
-  margin-top: 2rem;
   padding-bottom: 0.4rem;
+
+  > div {
+    font-size: 2rem;
+    margin-bottom: 0rem;
+  }
+  > h3 {
+    color: #009688;
+    font-size: 0.8rem;
+  }
+
+  @media ${(props) => props.tablet} {
+    grid-row: 1/2;
+    grid-column: 1/3;
+    > div {
+      font-size: 2.5rem;
+      margin-bottom: 0rem;
+    }
+    > h3 {
+      font-size: 1rem;
+    }
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 1/2;
+    grid-column: 1/3;
+    > div {
+      font-size: 2.5rem;
+      margin-bottom: 0rem;
+    }
+    > h3 {
+      font-size: 1rem;
+    }
+  }
 `;
 
-const MainTitle = styled.span`
-  font-size: 2.5rem;
-  margin-bottom: 0rem;
-`;
-
-const Poster = styled.div`
-  grid-column: 1/2;
-  grid-row: 2/4;
+const Poster = styled.div<ThemeSet>`
+  grid-row: 2/3;
+  grid-column: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 5rem;
+
+  > img {
+    border-radius: 0.7rem;
+    width: 8rem;
+    height: 11rem;
+  }
+
+  @media ${(props) => props.tablet} {
+    grid-row: 2/4;
+    grid-column: 1/2;
+    padding-left: 3rem;
+
+    > img {
+      width: 11rem;
+      height: 14rem;
+    }
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 2/4;
+    grid-column: 1/2;
+    padding-left: 5rem;
+
+    > img {
+      width: 11rem;
+      height: 14rem;
+    }
+  }
 `;
 
-const PosterImg = styled.img`
-  border-radius: 0.8rem;
-  width: 11rem;
-  height: 14rem;
-`;
-const MovieDetail = styled.div`
-  grid-column: 2/4;
-  grid-row: 2/4;
+const MovieDetail = styled.div<ThemeSet>`
+  grid-row: 3/5;
+  grid-column: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  font-size: 1rem;
-  padding-left: 3rem;
-  padding-right: 5rem;
+  align-items: center;
+  font-family: "EliceDigitalBaeum_Regular";
+  color: #8d6e63;
+  margin-top: 3rem;
+  padding: 3.3rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > h4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 0.3rem;
+    }
+    > span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.3rem;
+      font-size: 0.8rem;
+      padding: 0.2rem;
+    }
+  }
+
+  @media ${(props) => props.tablet} {
+    grid-row: 2/4;
+    grid-column: 2/4;
+    margin-top: 0rem;
+    padding-left: 3rem;
+    padding-right: 5rem;
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      > h4 {
+        display: flex;
+        width: 6rem;
+        font-size: 1rem;
+        padding: 0.7rem;
+      }
+      > span {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.1rem;
+        font-size: 1rem;
+        width: 16rem;
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 2/4;
+    grid-column: 2/4;
+    padding-left: 3rem;
+    padding-right: 5rem;
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      > h4 {
+        display: flex;
+        width: 6rem;
+        font-size: 1rem;
+        padding: 0.7rem;
+      }
+      > span {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.3rem;
+        font-size: 1rem;
+        width: 20rem;
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+      }
+    }
+  }
 `;
 
-const RatingBox = styled.div`
+const RatingBox = styled.div<ThemeSet>`
   display: flex;
+  flex-direction: column;
+  font-family: "EliceDigitalBaeum_Regular";
+  color: #8d6e63;
+  width: 7rem;
+  height: 3.8rem;
+  margin-top: 0.7rem;
+  margin-bottom: 3rem;
+
+  > div {
+    display: flex;
+    > h4 {
+      display: flex;
+      font-size: 0.8rem;
+      padding: 0.3rem;
+    }
+    > span {
+      display: flex;
+      align-items: center;
+      font-size: 0.75rem;
+      padding: 0.3rem;
+    }
+  }
+
+  @media ${(props) => props.tablet} {
+    > div {
+      display: flex;
+      > h4 {
+        display: flex;
+        width: 6rem;
+        font-size: 1rem;
+        padding: 0.7rem;
+      }
+      > span {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.1rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  @media ${(props) => props.desktop} {
+    > div {
+      display: flex;
+      margin-top: 0.7rem;
+      > h4 {
+        display: flex;
+        width: 6rem;
+        font-size: 1rem;
+        padding: 0.7rem;
+      }
+      > span {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.1rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+    }
+  }
 `;
-const StarRating = styled.div`
+
+const StarRating = styled.div<ThemeSet>`
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffa578;
-  font-size: 1.5rem;
-  margin-left: 1rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  padding: 0.2rem;
+
+  @media ${(props) => props.tablet} {
+    font-size: 1.2rem;
+    width: 250px;
+  }
+  @media ${(props) => props.desktop} {
+    font-size: 2rem;
+    width: 320px;
+  }
 `;
 
-const Link = styled.span`
+const LinkBox = styled.div<ThemeSet>`
+  grid-row: 5/6;
+  grid-column: 1/1;
   display: flex;
-  position: relative;
+  justify-content: center;
+  /* align-items: center; */
+
+  @media ${(props) => props.tablet} {
+    grid-row: 4/5;
+    grid-column: 1/4;
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 4/5;
+    grid-column: 1/4;
+  }
+`;
+
+const Link = styled.div`
+  display: flex;
+  position: absolute;
   cursor: pointer;
   margin: 0.2rem;
   padding: 0.2em 0;
@@ -124,71 +375,121 @@ const Link = styled.span`
   }
 `;
 
-const Contents = styled.h3`
-  font-family: "EliceDigitalBaeum_Regular";
-  color: #8d6e63;
-  margin-bottom: 0.8rem;
+const SmallImageContainer = styled.div<ThemeSet>`
+  display: none;
+
+  @media ${(props) => props.tablet} {
+    grid-row: 5/6;
+    grid-column: 1/2;
+    display: block;
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 5/6;
+    grid-column: 1/2;
+    display: block;
+  }
+
+  > img {
+    width: 10rem;
+    height: 6rem;
+    border: none;
+    margin-bottom: 1.5rem;
+    margin-left: 6rem;
+
+    @media ${(props) => props.tablet} {
+      margin-bottom: 1.5rem;
+      margin-left: 4rem;
+    }
+
+    @media ${(props) => props.desktop} {
+      margin-top: 2rem;
+      margin-left: 5rem;
+    }
+  }
 `;
 
-const SmallImageContainer = styled.div`
-  grid-column: 1/2;
-  grid-row: 4/5;
-`;
-
-const SmallImg = styled.img`
-  cursor: pointer;
-  width: 10rem;
-  height: 6rem;
-  border: none;
-  margin-bottom: 1.5rem;
-  margin-left: 6rem;
-`;
-
-const BtnContainer = styled.div`
-  grid-column: 2/3;
-  grid-row: 4/5;
+const BtnContainer = styled.div<ThemeSet>`
+  grid-row: 7/8;
+  grid-column: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1rem;
-`;
 
-const Btn = styled.button`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 25px;
-  background: #009688;
-  color: black;
+  > button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 25px;
+    background: #009688;
+    color: black;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    width: 10rem;
+    height: 2.2rem;
 
-  font-size: 1.2rem;
-  width: 12rem;
-  height: 2.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0px 3px 3px 1px black;
-  :hover {
-    background: #1a237e;
-    color: white;
-    font-weight: bold;
+    box-shadow: 0px 3px 3px 1px black;
+    :hover {
+      background: #1a237e;
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  @media ${(props) => props.tablet} {
+    grid-row: 5/6;
+    grid-column: 2/3;
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 5/6;
+    grid-column: 2/3;
+    > button {
+      font-size: 1.2rem;
+      width: 12rem;
+      height: 2.5rem;
+    }
   }
 `;
 
-const ImageContainer = styled.div`
-  grid-column: 3/4;
-  grid-row: 3/5;
+const ImageContainer = styled.div<ThemeSet>`
+  grid-row: 5/7;
+  grid-column: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
 
-const Image = styled.img`
-  display: flex;
-  width: 16rem;
-  height: 18rem;
-  padding-right: 1rem;
+  > img {
+    display: flex;
+    width: 14rem;
+    height: 12rem;
+    padding-right: 1rem;
+  }
+
+  @media ${(props) => props.tablet} {
+    grid-row: 4/6;
+    grid-column: 3/4;
+    > img {
+      display: flex;
+      width: 15rem;
+      height: 13rem;
+      padding-right: 1rem;
+    }
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 4/6;
+    grid-column: 3/4;
+    > img {
+      display: flex;
+      width: 13rem;
+      height: 15rem;
+      margin-top: 3rem;
+    }
+  }
 `;
 
 type MovieInfo = {
@@ -213,7 +514,7 @@ export default function ResultView() {
   console.log(title, pubDate, country);
 
   const star = [<IoMdStar />, <IoMdStarHalf />];
-  const rating: number = Math.round(parseInt(movieInfo?.userRating ?? "0"));
+  const rating: number = Math.round(+(movieInfo?.userRating ?? "0") * 1);
   console.log(rating);
 
   const curStar = [];
@@ -260,7 +561,7 @@ export default function ResultView() {
       setTimeout(() => setIsLoading(false), 1500);
     };
     getMovieData();
-  }, [key]);
+  }, [key, country, pubDate, title]);
 
   const copyClipBoard = () => {
     const copyUrl = document.location.href;
@@ -279,60 +580,72 @@ export default function ResultView() {
       {isLoading ? (
         <LoadingIndicator />
       ) : (
-        <OuterContainer>
-          <InnerContainer>
-            <Header>
-              <TitleBox>
-                <MainTitle>{title}</MainTitle>
+        <OuterContainer {...theme}>
+          <InnerContainer {...theme}>
+            <Header {...theme}>
+              <TitleBox {...theme}>
+                <div>{title}</div>
                 <h3>{movieInfo?.subtitle}</h3>
               </TitleBox>
             </Header>
-            <Poster>
-              <PosterImg src={movieInfo?.image} />
+            <Poster {...theme}>
+              <img src={movieInfo?.image} alt={movieInfo?.subtitle} />
             </Poster>
-            <MovieDetail>
-              <Contents>
-                배우 : {movieInfo?.actor.split("|").join(", ").slice(0, -2)}
-              </Contents>
-              <Contents>
-                감독 : {movieInfo?.director.split("|").slice(0, -1)}
-              </Contents>
-              <Contents>개봉연도 : {movieInfo?.pubDate}</Contents>
-              <RatingBox>
-                <Contents>관객 평점 : {movieInfo?.userRating}</Contents>
-                <StarRating>
+            <MovieDetail {...theme}>
+              <div>
+                <h4>배우</h4>
+                <span>
+                  {movieInfo?.actor.split("|").join(", ").slice(0, -2)}
+                </span>
+              </div>
+              <div>
+                <h4>감독</h4>
+                <span> {movieInfo?.director.split("|").slice(0, -1)}</span>
+              </div>
+              <div>
+                <h4>개봉연도</h4>
+                <span> {movieInfo?.pubDate}</span>
+              </div>
+              <RatingBox {...theme}>
+                <div>
+                  <h4>관객 평점</h4>
+                  <span>{movieInfo?.userRating}</span>
+                </div>
+                <StarRating {...theme}>
                   {curStar.map((star, idx) => (
-                    <span key={idx}>{star}</span>
+                    <h5 key={idx}>{star}</h5>
                   ))}
                 </StarRating>
               </RatingBox>
+            </MovieDetail>
+            <LinkBox {...theme}>
               <Link>
                 <a href={movieInfo?.link} target="_blank" rel="noreferrer">
                   더 자세한 정보를 원한다면
                 </a>
               </Link>
-            </MovieDetail>
-            <SmallImageContainer>
-              <SmallImg src="../video_files.svg" />
+            </LinkBox>
+            <SmallImageContainer {...theme}>
+              <img src="../video_files.svg" alt={"video_files"} />
             </SmallImageContainer>
-            <BtnContainer>
-              <Btn
+            <BtnContainer {...theme}>
+              <button
                 onClick={() => {
                   navigate("/");
                 }}
               >
                 <span>테스트 다시하기</span>
-              </Btn>
-              <Btn
+              </button>
+              <button
                 onClick={() => {
                   copyClipBoard();
                 }}
               >
                 <span>링크 저장하기</span>
-              </Btn>
+              </button>
             </BtnContainer>
-            <ImageContainer>
-              <Image src="../Film_rolls.svg" />
+            <ImageContainer {...theme}>
+              <img src="../Film_rolls.svg" alt={"Film_rolls"} />
             </ImageContainer>
           </InnerContainer>
         </OuterContainer>

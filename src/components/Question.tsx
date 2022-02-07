@@ -2,17 +2,32 @@ import React, { useEffect, useState } from "react";
 import { makeOrder } from "../utils/makeOrder";
 import { QuestionSet, questionList } from "../static/questionList";
 import styled from "styled-components";
+import { theme, ThemeSet } from "../theme";
 
-const QuestionContainer = styled.section`
+const QuestionContainer = styled.section<ThemeSet>`
   margin: 1rem;
   display: grid;
   grid-gap: 1rem;
-  grid-template-rows: repeat(4, 9rem);
-  grid-template-columns: repeat(1, 28rem);
+  grid-template-rows: repeat(4, 7.5rem);
+  grid-template-columns: repeat(1, 17rem);
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  /* @media ${(props) => props.minimum} {
+    min-height: 1000px;
+  }
+  @media ${(props) => props.mobile} {
+    min-height: 1000px;
+  }
+  @media ${(props) => props.tablet} {
+    min-height: 700px;
+  } */
+  @media ${(props) => props.desktop} {
+    grid-gap: 1rem;
+    grid-template-rows: repeat(4, 9rem);
+    grid-template-columns: repeat(1, 28rem);
+  }
 `;
 
 const ProgressBarContainer = styled.div`
@@ -28,16 +43,20 @@ const Number = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const Progress = styled.div`
+const Progress = styled.div<ThemeSet>`
   background: rgba(0, 0, 0, 0.25);
   border-radius: 6px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
     0 1px rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
     0 1px rgba(255, 255, 255, 0.08);
-  width: 300px;
+  width: 230px;
   padding: 1px;
   margin-bottom: 3rem;
+
+  @media ${(props) => props.desktop} {
+    width: 300px;
+  }
 `;
 
 const ProgressBar = styled.div<ProBar>`
@@ -88,10 +107,13 @@ const QuestionBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const Text = styled.div`
-  font-size: 1.7rem;
-  /* color: #f5f5f5; */
+const Text = styled.div<ThemeSet>`
+  font-size: 1.2rem;
   margin-bottom: 2rem;
+
+  @media ${(props) => props.desktop} {
+    font-size: 1.7rem;
+  }
 `;
 
 const BtnContainer = styled.div`
@@ -102,7 +124,7 @@ const BtnContainer = styled.div`
   align-items: center;
 `;
 
-const Btn = styled.button`
+const Btn = styled.button<ThemeSet>`
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -110,14 +132,20 @@ const Btn = styled.button`
   align-items: center;
   border: none;
   border-radius: 25px;
-  width: 15rem;
-  height: 2.9rem;
+  width: 11rem;
+  height: 2.5rem;
   font-size: 1rem;
   margin: 1rem;
   :hover {
     color: white;
     background-color: #1a237e;
     font-weight: bold;
+  }
+
+  @media ${(props) => props.desktop} {
+    width: 15rem;
+    height: 2.9rem;
+    font-size: 1rem;
   }
 `;
 
@@ -151,9 +179,6 @@ export default function Question({
     back: "#fb8c00",
   });
 
-  console.log(qt);
-  console.log(asOrder);
-
   useEffect(() => {
     setQt(questionList.find((e) => e.id === curOrder) as QuestionSet);
   }, [curOrder]);
@@ -182,22 +207,22 @@ export default function Question({
   }, [orderLen]);
 
   return (
-    <QuestionContainer>
+    <QuestionContainer {...theme}>
       <ProgressBarContainer>
         <Number>
           {orderLen !== 0 ? `${3 - (orderLen - 1)} / 3` : "3 / 3"}
         </Number>
-        <Progress>
+        <Progress {...theme}>
           <ProgressBar {...curProgress}></ProgressBar>
         </Progress>
       </ProgressBarContainer>
       <QuestionBox>
         <h1>Q.</h1>
-        <Text>{qt?.question}</Text>
+        <Text {...theme}>{qt?.question}</Text>
       </QuestionBox>
       <BtnContainer>
         {asOrder.map((curOrder: number, i: number) => (
-          <Btn key={i} onClick={() => handleChoice(curOrder)}>
+          <Btn {...theme} key={i} onClick={() => handleChoice(curOrder)}>
             {qt?.answer[curOrder]}
           </Btn>
         ))}
