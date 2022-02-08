@@ -86,7 +86,7 @@ const TitleBox = styled.div<ThemeSet>`
   padding-bottom: 0.4rem;
 
   > div {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 0rem;
   }
   > h3 {
@@ -237,8 +237,6 @@ const MovieDetail = styled.div<ThemeSet>`
         margin-bottom: 0.3rem;
         font-size: 1rem;
         width: 20rem;
-        padding-left: 1.3rem;
-        padding-right: 1.3rem;
       }
     }
   }

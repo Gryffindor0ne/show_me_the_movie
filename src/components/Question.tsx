@@ -14,15 +14,7 @@ const QuestionContainer = styled.section<ThemeSet>`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  /* @media ${(props) => props.minimum} {
-    min-height: 1000px;
-  }
-  @media ${(props) => props.mobile} {
-    min-height: 1000px;
-  }
-  @media ${(props) => props.tablet} {
-    min-height: 700px;
-  } */
+
   @media ${(props) => props.desktop} {
     grid-gap: 1rem;
     grid-template-rows: repeat(4, 9rem);
