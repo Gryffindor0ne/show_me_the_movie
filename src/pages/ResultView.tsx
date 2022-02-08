@@ -5,6 +5,7 @@ import axios from "axios";
 import LoadingIndicator from "../components/Loading";
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 import { theme, ThemeSet } from "../theme";
+import swal from "sweetalert";
 
 const OuterContainer = styled.section<ThemeSet>`
   display: flex;
@@ -192,25 +193,29 @@ const MovieDetail = styled.div<ThemeSet>`
   @media ${(props) => props.tablet} {
     grid-row: 2/4;
     grid-column: 2/4;
-    margin-top: 0rem;
     padding-left: 3rem;
     padding-right: 5rem;
 
     > div {
       display: flex;
       flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
       > h4 {
         display: flex;
-        width: 6rem;
+        justify-content: flex-start;
+        align-items: center;
         font-size: 1rem;
-        padding: 0.7rem;
+        width: 6rem;
+        padding: 0.5rem;
       }
       > span {
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        margin-bottom: 0.1rem;
         font-size: 1rem;
         width: 16rem;
+        margin-bottom: 0rem;
         padding: 0.5rem;
       }
     }
@@ -219,24 +224,31 @@ const MovieDetail = styled.div<ThemeSet>`
   @media ${(props) => props.desktop} {
     grid-row: 2/4;
     grid-column: 2/4;
+
     padding-left: 3rem;
     padding-right: 5rem;
 
     > div {
       display: flex;
       flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
       > h4 {
         display: flex;
-        width: 6rem;
+        justify-content: flex-start;
+        align-items: center;
         font-size: 1rem;
-        padding: 0.7rem;
+        width: 6rem;
+        padding: 0.5rem;
       }
       > span {
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        margin-bottom: 0.3rem;
         font-size: 1rem;
         width: 20rem;
+        margin-bottom: 0rem;
+        padding: 0.5rem;
       }
     }
   }
@@ -255,12 +267,10 @@ const RatingBox = styled.div<ThemeSet>`
   > div {
     display: flex;
     > h4 {
-      display: flex;
       font-size: 0.8rem;
       padding: 0.3rem;
     }
     > span {
-      display: flex;
       align-items: center;
       font-size: 0.75rem;
       padding: 0.3rem;
@@ -268,39 +278,55 @@ const RatingBox = styled.div<ThemeSet>`
   }
 
   @media ${(props) => props.tablet} {
+    display: flex;
+    width: 22rem;
+    height: 3.8rem;
+    margin-top: 0rem;
+
     > div {
       display: flex;
+      justify-content: flex-start;
+      align-items: center;
       > h4 {
         display: flex;
+        justify-content: flex-start;
+        align-items: center;
         width: 6rem;
         font-size: 1rem;
-        padding: 0.7rem;
+        padding: 0.5rem;
       }
       > span {
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        margin-bottom: 0.1rem;
         font-size: 1rem;
+        margin-bottom: 0.1rem;
         padding: 0.5rem;
       }
     }
   }
 
   @media ${(props) => props.desktop} {
+    display: flex;
+    width: 26rem;
+    height: 3.8rem;
+    margin-top: 0rem;
+
     > div {
       display: flex;
-      margin-top: 0.7rem;
+      justify-content: flex-start;
+      align-items: center;
       > h4 {
         display: flex;
-        width: 6rem;
+        justify-content: flex-start;
+        align-items: center;
         font-size: 1rem;
-        padding: 0.7rem;
+        width: 6rem;
+        padding: 0.5rem;
       }
       > span {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.1rem;
         font-size: 1rem;
+        margin-bottom: 0.1rem;
         padding: 0.5rem;
       }
     }
@@ -316,12 +342,12 @@ const StarRating = styled.div<ThemeSet>`
   padding: 0.2rem;
 
   @media ${(props) => props.tablet} {
-    font-size: 1.2rem;
-    width: 250px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
   }
   @media ${(props) => props.desktop} {
     font-size: 2rem;
-    width: 320px;
+    padding: 0.5rem;
   }
 `;
 
@@ -330,11 +356,12 @@ const LinkBox = styled.div<ThemeSet>`
   grid-column: 1/1;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  margin-bottom: 1rem;
 
   @media ${(props) => props.tablet} {
     grid-row: 4/5;
     grid-column: 1/4;
+    margin-bottom: 1.5rem;
   }
 
   @media ${(props) => props.desktop} {
@@ -373,36 +400,82 @@ const Link = styled.div`
   }
 `;
 
-const SmallImageContainer = styled.div<ThemeSet>`
-  display: none;
-
-  @media ${(props) => props.tablet} {
-    grid-row: 5/6;
-    grid-column: 1/2;
-    display: block;
-  }
-
-  @media ${(props) => props.desktop} {
-    grid-row: 5/6;
-    grid-column: 1/2;
-    display: block;
-  }
+const ImageContainer1 = styled.div<ThemeSet>`
+  grid-row: 6/7;
+  grid-column: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
 
   > img {
     width: 10rem;
     height: 6rem;
     border: none;
-    margin-bottom: 1.5rem;
-    margin-left: 6rem;
+  }
 
-    @media ${(props) => props.tablet} {
+  @media ${(props) => props.tablet} {
+    grid-row: 5/6;
+    grid-column: 1/2;
+
+    > img {
+      width: 10rem;
+      height: 6rem;
+      border: none;
       margin-bottom: 1.5rem;
-      margin-left: 4rem;
+      margin-left: 2rem;
     }
+  }
 
-    @media ${(props) => props.desktop} {
-      margin-top: 2rem;
-      margin-left: 5rem;
+  @media ${(props) => props.desktop} {
+    grid-row: 5/6;
+    grid-column: 1/2;
+    margin-top: 0.5rem;
+
+    > img {
+      width: 10rem;
+      height: 6rem;
+      border: none;
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+`;
+
+const ImageContainer2 = styled.div<ThemeSet>`
+  grid-row: 5/7;
+  grid-column: 1/1;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+
+  > img {
+    display: flex;
+    width: 14rem;
+    height: 12rem;
+    padding-right: 1rem;
+  }
+
+  @media ${(props) => props.tablet} {
+    grid-row: 4/6;
+    grid-column: 3/4;
+    > img {
+      display: flex;
+      width: 14rem;
+      height: 11rem;
+      padding-right: 1rem;
+    }
+  }
+
+  @media ${(props) => props.desktop} {
+    grid-row: 4/6;
+    grid-column: 3/4;
+    margin-top: 1rem;
+
+    > img {
+      display: flex;
+      width: 14rem;
+      height: 12rem;
     }
   }
 `;
@@ -453,43 +526,6 @@ const BtnContainer = styled.div<ThemeSet>`
   }
 `;
 
-const ImageContainer = styled.div<ThemeSet>`
-  grid-row: 5/7;
-  grid-column: 1/1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  > img {
-    display: flex;
-    width: 14rem;
-    height: 12rem;
-    padding-right: 1rem;
-  }
-
-  @media ${(props) => props.tablet} {
-    grid-row: 4/6;
-    grid-column: 3/4;
-    > img {
-      display: flex;
-      width: 15rem;
-      height: 13rem;
-      padding-right: 1rem;
-    }
-  }
-
-  @media ${(props) => props.desktop} {
-    grid-row: 4/6;
-    grid-column: 3/4;
-    > img {
-      display: flex;
-      width: 13rem;
-      height: 15rem;
-      margin-top: 3rem;
-    }
-  }
-`;
-
 type MovieInfo = {
   actor: string;
   director: string;
@@ -507,7 +543,7 @@ export default function ResultView() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [movieInfo, setMovieInfo] = useState<MovieInfo | undefined>();
 
-  // 중복요소 떄문에 구현
+  // 중복요소 때문에 구현
   const [title, pubDate, country] = key?.split("_") as string[];
   console.log(title, pubDate, country);
 
@@ -537,12 +573,6 @@ export default function ResultView() {
             "X-Naver-Client-Secret": `${process.env.REACT_APP_NAVER_CLIENT_SECRET}`,
           },
         });
-        console.log(getData.data.items);
-
-        // TODO item 타입 미리 정해두기
-        console.log(
-          getData.data.items.find((item: MovieInfo) => item.pubDate === pubDate)
-        );
 
         if (getData.status === 200) {
           setMovieInfo(
@@ -561,15 +591,23 @@ export default function ResultView() {
     getMovieData();
   }, [key, country, pubDate, title]);
 
-  const copyClipBoard = () => {
+  const copyToClipBoard = () => {
     const copyUrl = document.location.href;
     navigator.clipboard
       .writeText(`${copyUrl}`)
       .then(() => {
-        alert("링크가 복사되었습니다!");
+        swal({
+          title: "Link Saved Success!",
+          text: "링크가 저장되었습니다!",
+          icon: "success",
+        });
       })
       .catch(() => {
-        alert("링크 복사가 실패하였습니다!");
+        swal({
+          title: "Link Saved Failed!",
+          text: "링크 저장에 실패하였습니다!",
+          icon: "error",
+        });
       });
   };
 
@@ -619,13 +657,13 @@ export default function ResultView() {
             <LinkBox {...theme}>
               <Link>
                 <a href={movieInfo?.link} target="_blank" rel="noreferrer">
-                  더 자세한 정보를 원한다면
+                  더 자세한 정보를 원한다면?
                 </a>
               </Link>
             </LinkBox>
-            <SmallImageContainer {...theme}>
+            <ImageContainer1 {...theme}>
               <img src="../video_files.svg" alt={"video_files"} />
-            </SmallImageContainer>
+            </ImageContainer1>
             <BtnContainer {...theme}>
               <button
                 onClick={() => {
@@ -636,15 +674,15 @@ export default function ResultView() {
               </button>
               <button
                 onClick={() => {
-                  copyClipBoard();
+                  copyToClipBoard();
                 }}
               >
                 <span>링크 저장하기</span>
               </button>
             </BtnContainer>
-            <ImageContainer {...theme}>
-              <img src="../Film_rolls.svg" alt={"Film_rolls"} />
-            </ImageContainer>
+            <ImageContainer2 {...theme}>
+              <img src="../filmRolls.svg" alt={"filmRolls"} />
+            </ImageContainer2>
           </InnerContainer>
         </OuterContainer>
       )}
