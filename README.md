@@ -1,6 +1,6 @@
 # Show Me The Movie 🎥
 
-![mainPage](https://user-images.githubusercontent.com/79234473/152975934-e026ec68-094b-4c67-bdbb-236eb4e5991b.png)
+![Main](https://user-images.githubusercontent.com/79234473/152980856-4c2b74d1-0c0a-416b-983f-a4c76944d3a2.png)
 
 ### 🖥 영화보고 싶을때
 
