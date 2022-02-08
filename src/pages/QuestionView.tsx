@@ -35,7 +35,7 @@ export default function QuestionView() {
       const targetMovie = findMovie(answer);
       navigate(`/result/${targetMovie}`);
     }
-  }, [order, answer]);
+  }, [order, answer, navigate]);
 
   const handleChoice = (num: number): void => {
     answers[curOrder] = num;

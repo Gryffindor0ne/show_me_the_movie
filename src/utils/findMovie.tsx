@@ -5,7 +5,6 @@ type answerSet = {
 };
 
 export const findMovie = (answer: answerSet) => {
-  console.log(answer);
   const country = answer[1];
   const genre = answer[2] - 1;
   const like = answer[3] - 1;

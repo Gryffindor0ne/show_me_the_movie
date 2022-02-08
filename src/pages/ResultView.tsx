@@ -5,7 +5,7 @@ import axios from "axios";
 import LoadingIndicator from "../components/Loading";
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 import { theme, ThemeSet } from "../theme";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const OuterContainer = styled.section<ThemeSet>`
   display: flex;
@@ -545,11 +545,9 @@ export default function ResultView() {
 
   // 중복요소 때문에 구현
   const [title, pubDate, country] = key?.split("_") as string[];
-  console.log(title, pubDate, country);
 
   const star = [<IoMdStar />, <IoMdStarHalf />];
   const rating: number = Math.round(+(movieInfo?.userRating ?? "0") * 1);
-  console.log(rating);
 
   const curStar = [];
   for (let i = 1; i <= rating / 2; i++) {
@@ -596,14 +594,14 @@ export default function ResultView() {
     navigator.clipboard
       .writeText(`${copyUrl}`)
       .then(() => {
-        swal({
+        Swal.fire({
           title: "Link Saved Success!",
           text: "링크가 저장되었습니다!",
           icon: "success",
         });
       })
       .catch(() => {
-        swal({
+        Swal.fire({
           title: "Link Saved Failed!",
           text: "링크 저장에 실패하였습니다!",
           icon: "error",
