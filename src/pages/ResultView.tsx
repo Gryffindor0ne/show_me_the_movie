@@ -538,6 +538,9 @@ type MovieInfo = {
 };
 
 export default function ResultView() {
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+  const URL = `${PROXY}/v1/search/movie.json`;
+
   const navigate = useNavigate();
   const { key } = useParams();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -560,7 +563,7 @@ export default function ResultView() {
   useEffect(() => {
     const getMovieData = async () => {
       try {
-        const getData = await axios.get(`/v1/search/movie.json`, {
+        const getData = await axios.get(URL, {
           params: {
             query: title,
             display: 50,
