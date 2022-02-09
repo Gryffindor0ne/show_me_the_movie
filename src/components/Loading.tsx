@@ -6,7 +6,11 @@ const IndicatorContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   height: 100vh;
 `;
 
@@ -53,17 +57,33 @@ const Indicator = styled.div<ThemeSet>`
     border-radius: 45%;
     background: rgba(255, 255, 255, 0.7);
     animation: wave 5s linear infinite;
+    -webkit-animation: wave 5s linear infinite;
   }
   :after {
     border-radius: 35%;
     background: rgba(255, 255, 255, 0.3);
     animation: wave 5s linear infinite;
+    -webkit-animation: wave 5s linear infinite;
   }
-  @keyframes wave {
+
+  @-webkit-keyframes wave {
     0% {
+      -webkit-transform: rotate(0deg);
       transform: rotate(0);
     }
     100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes wave {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }
   }
