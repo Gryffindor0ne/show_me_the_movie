@@ -143,7 +143,7 @@ const BtnCotainer = styled.div<ThemeSet>`
 
   grid-row: 5/6;
   grid-column: 1/1;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
 
   > button {
     cursor: pointer;
@@ -158,8 +158,7 @@ const BtnCotainer = styled.div<ThemeSet>`
     font-family: "Luckiest Guy", cursive;
     width: 15rem;
     height: 3rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+
     padding-top: 0.6rem;
     box-shadow: 0px 3px 3px 1px black;
     :hover {
@@ -175,7 +174,7 @@ const BtnCotainer = styled.div<ThemeSet>`
     > button {
       font-size: 2.3rem;
       width: 17rem;
-      height: 10rem;
+      height: 3rem;
     }
   }
 
@@ -187,7 +186,7 @@ const BtnCotainer = styled.div<ThemeSet>`
     > button {
       font-size: 2rem;
       width: 15rem;
-      height: 10rem;
+      height: 3rem;
     }
   }
 `;
