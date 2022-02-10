@@ -19,7 +19,6 @@ const MainContainer = styled.section<ThemeSet>`
   margin: 1rem;
   grid-template-rows: repeat(5, 7rem);
   grid-template-columns: auto;
-  padding-top: 3rem;
 
   @media ${(props) => props.tablet} {
     grid-template-rows: repeat(6, 9rem);
