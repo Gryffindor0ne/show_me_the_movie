@@ -17,7 +17,7 @@ const MainContainer = styled.section<ThemeSet>`
   display: grid;
   color: white;
   margin: 1rem;
-  grid-template-rows: repeat(5, 7rem);
+  grid-template-rows: repeat(5, 6.5rem);
   grid-template-columns: auto;
 
   @media ${(props) => props.tablet} {

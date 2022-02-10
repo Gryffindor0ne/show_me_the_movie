@@ -8,7 +8,7 @@ const QuestionContainer = styled.section<ThemeSet>`
   margin: 1rem;
   display: grid;
   grid-gap: 1rem;
-  grid-template-rows: repeat(4, 7.5rem);
+  grid-template-rows: repeat(4, 7rem);
   grid-template-columns: repeat(1, 17rem);
   justify-content: center;
   align-items: center;
