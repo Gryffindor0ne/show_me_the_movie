@@ -17,7 +17,7 @@ const MainContainer = styled.section<ThemeSet>`
   display: grid;
   color: white;
   margin: 1rem;
-  grid-template-rows: repeat(5, 6.5rem);
+  grid-template-rows: repeat(5, 6.3rem);
   grid-template-columns: auto;
 
   @media ${(props) => props.tablet} {
@@ -110,7 +110,7 @@ const Image = styled.img<ThemeSet>`
   grid-column: 1/1;
 
   width: 17rem;
-  height: 15rem;
+  height: 14rem;
   padding-top: 2rem;
 
   @media ${(props) => props.minimum} {
