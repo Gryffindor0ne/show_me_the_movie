@@ -7,11 +7,8 @@ const Section = styled.section<ThemeSet>`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0;
-  bottom: 0;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   margin-left: auto;
   margin-right: auto;
 `;
