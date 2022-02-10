@@ -52,11 +52,11 @@ const Progress = styled.div<ThemeSet>`
   margin-bottom: 3rem;
 
   @media ${(props) => props.tablet} {
-    width: 300px;
+    width: 400px;
   }
 
   @media ${(props) => props.desktop} {
-    width: 300px;
+    width: 400px;
   }
 `;
 

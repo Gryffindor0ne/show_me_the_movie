@@ -9,98 +9,97 @@ const Section = styled.section<ThemeSet>`
   align-items: center;
   width: 100vw;
   height: 100vh;
-
   margin-left: auto;
   margin-right: auto;
-
-  @media ${(props) => props.minimum} {
-    min-height: 1000px;
-  }
-  @media ${(props) => props.mobile} {
-    min-height: 1000px;
-  }
-  @media ${(props) => props.tablet} {
-    min-height: 700px;
-  }
 `;
 
 const MainContainer = styled.section<ThemeSet>`
   display: grid;
   color: white;
   margin: 1rem;
-  grid-gap: 0.5rem;
-  grid-template-rows: repeat(7, 8rem);
+  grid-template-rows: repeat(5, 7rem);
   grid-template-columns: auto;
+  padding-top: 3rem;
 
   @media ${(props) => props.tablet} {
-    grid-template-rows: repeat(4, 8rem);
-    grid-template-columns: repeat(2, 23.5rem);
+    grid-template-rows: repeat(6, 9rem);
+    grid-template-columns: repeat(1, 35rem);
   }
 
   @media ${(props) => props.desktop} {
-    grid-template-rows: repeat(4, 7.5rem);
-    grid-template-columns: repeat(2, 27rem);
+    grid-template-rows: repeat(4, 8rem);
+    grid-template-columns: repeat(2, 30rem);
   }
 `;
 
 const TitleBox = styled.div<ThemeSet>`
+  grid-row: 1/2;
+  grid-column: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  grid-row: 1/3;
-  grid-column: 1/1;
 
-  @media ${(props) => props.tablet} {
-    grid-row: 1/3;
-    grid-column: 1/2;
+  > div {
+    font-size: 3rem;
+    font-family: "Luckiest Guy", cursive;
+    margin-bottom: 0.5rem;
   }
-
-  @media ${(props) => props.desktop} {
-    grid-row: 1/3;
-    grid-column: 1/2;
-  }
-`;
-
-const Title = styled.div<ThemeSet>`
-  font-size: 3.7rem;
-  font-family: "Luckiest Guy", cursive;
-  margin-bottom: 0.5rem;
 
   @media ${(props) => props.minimum} {
-    font-size: 3.2rem;
+    > div {
+      font-size: 3.2rem;
+    }
+  }
+
+  @media ${(props) => props.tablet} {
+    > div {
+      font-size: 5.5rem;
+    }
   }
 
   @media ${(props) => props.desktop} {
-    font-size: 5rem;
+    grid-row: 1/3;
+    grid-column: 1/2;
+
+    > div {
+      font-size: 5rem;
+    }
   }
 `;
 
 const TextBox = styled.div<ThemeSet>`
+  grid-row: 2/3;
+  grid-column: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  grid-row: 3/4;
-  grid-column: 1/1;
+  > div {
+    font-size: 1rem;
+    font-family: "EliceDigitalBaeum_Regular";
+    color: #1a237e;
+    margin-bottom: 0.1rem;
+  }
 
   @media ${(props) => props.tablet} {
-    grid-row: 3/4;
-    grid-column: 1/2;
+    margin-top: 3.7rem;
+    > div {
+      font-size: 1.5rem;
+    }
   }
 
   @media ${(props) => props.desktop} {
     grid-row: 3/4;
     grid-column: 1/2;
-  }
-`;
+    margin-bottom: 2rem;
 
-const Text = styled.div`
-  font-size: 1.2rem;
-  font-family: "EliceDigitalBaeum_Regular";
-  color: #1a237e;
-  margin-bottom: 0.4rem;
+    > div {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+  }
 `;
 
 const Image = styled.img<ThemeSet>`
@@ -108,11 +107,11 @@ const Image = styled.img<ThemeSet>`
   justify-content: center;
   align-items: center;
 
-  grid-row: 4/7;
+  grid-row: 3/5;
   grid-column: 1/1;
 
-  width: 20rem;
-  height: auto;
+  width: 17rem;
+  height: 15rem;
   padding-top: 2rem;
 
   @media ${(props) => props.minimum} {
@@ -120,18 +119,18 @@ const Image = styled.img<ThemeSet>`
   }
 
   @media ${(props) => props.tablet} {
-    grid-row: 1/5;
-    grid-column: 2/3;
-    width: 24rem;
-    height: 35rem;
-    padding-top: 5rem;
+    grid-row: 3/6;
+    grid-column: 1/1;
+    width: 36rem;
+    height: 26rem;
+    padding-top: 3rem;
   }
 
   @media ${(props) => props.desktop} {
     grid-row: 1/5;
     grid-column: 2/3;
     width: 27rem;
-    height: 30rem;
+    height: 32rem;
     padding-top: 5rem;
   }
 `;
@@ -142,43 +141,54 @@ const BtnCotainer = styled.div<ThemeSet>`
   justify-content: center;
   align-items: center;
 
-  grid-row: 7/8;
+  grid-row: 5/6;
   grid-column: 1/1;
-  margin-bottom: 5rem;
+  margin-top: 1rem;
+
+  > button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 25px;
+    background: #009688;
+    color: black;
+    font-size: 1.7rem;
+    font-family: "Luckiest Guy", cursive;
+    width: 15rem;
+    height: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding-top: 0.6rem;
+    box-shadow: 0px 3px 3px 1px black;
+    :hover {
+      background: #1a237e;
+      color: white;
+    }
+  }
 
   @media ${(props) => props.tablet} {
-    grid-row: 4/5;
-    grid-column: 1/2;
-    margin-bottom: 0rem;
+    grid-row: 6/7;
+    grid-column: 1/1;
+
+    > button {
+      font-size: 2.3rem;
+      width: 17rem;
+      height: 10rem;
+    }
   }
 
   @media ${(props) => props.desktop} {
     grid-row: 4/5;
     grid-column: 1/2;
     margin-bottom: 0rem;
-  }
-`;
 
-const Btn = styled.button`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 25px;
-  background: #009688;
-  color: black;
-  font-size: 1.7rem;
-  font-family: "Luckiest Guy", cursive;
-  width: 15rem;
-  height: 3rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  padding-top: 0.6rem;
-  box-shadow: 0px 3px 3px 1px black;
-  :hover {
-    background: #1a237e;
-    color: white;
+    > button {
+      font-size: 2rem;
+      width: 15rem;
+      height: 10rem;
+    }
   }
 `;
 
@@ -189,23 +199,23 @@ export default function Home() {
     <Section {...theme}>
       <MainContainer {...theme}>
         <TitleBox {...theme}>
-          <Title {...theme}>SHOW ME</Title>
-          <Title {...theme}>THE MOVIE</Title>
+          <div>SHOW ME</div>
+          <div>THE MOVIE</div>
         </TitleBox>
         <TextBox {...theme}>
-          <Text>지금 뭘 볼까?</Text>
-          <Text>고민하는 이 순간!</Text>
-          <Text>최애 리스트 중에서</Text>
-          <Text>하나를 골라보자!</Text>
+          <div>지금 뭘 볼까?</div>
+          <div>고민하는 이 순간!</div>
+          <div>최애 리스트 중에서</div>
+          <div>하나를 골라보자!</div>
         </TextBox>
         <BtnCotainer {...theme}>
-          <Btn
+          <button
             onClick={() => {
               navigate("/question");
             }}
           >
             Let's go!
-          </Btn>
+          </button>
         </BtnCotainer>
         <Image {...theme} src="cinema.svg"></Image>
       </MainContainer>
