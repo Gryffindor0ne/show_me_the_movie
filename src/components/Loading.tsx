@@ -6,15 +6,12 @@ const IndicatorContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   height: 100vh;
 `;
 
 const Indicator = styled.div<ThemeSet>`
+  z-index: 1000;
   width: 130px;
   height: 130px;
   background-color: skyblue;
@@ -37,6 +34,7 @@ const Indicator = styled.div<ThemeSet>`
   :before,
   :after {
     content: "";
+    z-index: -1;
     position: absolute;
     width: 180px;
     height: 230px;
@@ -69,21 +67,17 @@ const Indicator = styled.div<ThemeSet>`
   @-webkit-keyframes wave {
     0% {
       -webkit-transform: rotate(0deg);
-      transform: rotate(0);
     }
     100% {
       -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
     }
   }
 
   @keyframes wave {
     0% {
-      -webkit-transform: rotate(0deg);
       transform: rotate(0);
     }
     100% {
-      -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }
   }

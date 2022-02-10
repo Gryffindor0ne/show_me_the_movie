@@ -8,6 +8,7 @@ const Section = styled.section<ThemeSet>`
   justify-content: center;
   align-items: center;
   width: 100vw;
+  height: 100vh;
 
   margin-left: auto;
   margin-right: auto;
@@ -21,9 +22,6 @@ const Section = styled.section<ThemeSet>`
   @media ${(props) => props.tablet} {
     min-height: 700px;
   }
-  @media ${(props) => props.desktop} {
-    height: 100vh;
-  }
 `;
 
 const MainContainer = styled.section<ThemeSet>`
@@ -35,8 +33,8 @@ const MainContainer = styled.section<ThemeSet>`
   grid-template-columns: auto;
 
   @media ${(props) => props.tablet} {
-    grid-template-rows: repeat(4, 6rem);
-    grid-template-columns: repeat(2, 22rem);
+    grid-template-rows: repeat(4, 8rem);
+    grid-template-columns: repeat(2, 23.5rem);
   }
 
   @media ${(props) => props.desktop} {
@@ -124,8 +122,8 @@ const Image = styled.img<ThemeSet>`
   @media ${(props) => props.tablet} {
     grid-row: 1/5;
     grid-column: 2/3;
-    width: 20rem;
-    height: 25rem;
+    width: 24rem;
+    height: 35rem;
     padding-top: 5rem;
   }
 

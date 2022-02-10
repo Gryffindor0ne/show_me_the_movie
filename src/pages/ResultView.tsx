@@ -12,11 +12,12 @@ const OuterContainer = styled.section<ThemeSet>`
   justify-content: center;
   align-items: center;
   width: 100vw;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
 
   @media ${(props) => props.minimum} {
-    min-height: 1000px;
+    min-height: 1200px;
   }
   @media ${(props) => props.mobile} {
     min-height: 1200px;
@@ -24,9 +25,6 @@ const OuterContainer = styled.section<ThemeSet>`
 
   @media ${(props) => props.tablet} {
     min-height: 800px;
-  }
-  @media ${(props) => props.desktop} {
-    height: 100vh;
   }
 `;
 
@@ -44,12 +42,12 @@ const InnerContainer = styled.section<ThemeSet>`
     linear-gradient(to bottom, #eeeeee 1px, transparent 1px);
 
   @media ${(props) => props.minimum} {
-    grid-template-rows: repeat(6, 10rem);
+    grid-template-rows: repeat(6, 10.5rem);
     grid-template-columns: repeat(1, 16rem);
   }
 
   @media ${(props) => props.tablet} {
-    grid-template-rows: repeat(3, 8rem);
+    grid-template-rows: repeat(3, 12rem);
     grid-template-columns: repeat(3, 15rem);
   }
 
@@ -93,6 +91,17 @@ const TitleBox = styled.div<ThemeSet>`
   > h3 {
     color: #009688;
     font-size: 0.8rem;
+  }
+
+  @media ${(props) => props.minimum} {
+    > div {
+      font-size: 1.25rem;
+      margin-bottom: 0rem;
+    }
+    > h3 {
+      color: #009688;
+      font-size: 0.8rem;
+    }
   }
 
   @media ${(props) => props.tablet} {
@@ -201,6 +210,7 @@ const MovieDetail = styled.div<ThemeSet>`
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+      margin-bottom: 0.7rem;
       > h4 {
         display: flex;
         justify-content: flex-start;
@@ -361,7 +371,7 @@ const LinkBox = styled.div<ThemeSet>`
   @media ${(props) => props.tablet} {
     grid-row: 4/5;
     grid-column: 1/4;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
   }
 
   @media ${(props) => props.desktop} {
@@ -414,16 +424,26 @@ const ImageContainer1 = styled.div<ThemeSet>`
     border: none;
   }
 
+  @media ${(props) => props.minimum} {
+    margin-top: 0rem;
+
+    > img {
+      width: 9rem;
+      height: 6rem;
+      border: none;
+    }
+  }
+
   @media ${(props) => props.tablet} {
     grid-row: 5/6;
     grid-column: 1/2;
-
+    margin-top: 0rem;
     > img {
-      width: 10rem;
-      height: 6rem;
+      width: 11rem;
+      height: 8rem;
       border: none;
+      margin-left: 1rem;
       margin-bottom: 1.5rem;
-      margin-left: 2rem;
     }
   }
 
@@ -456,13 +476,24 @@ const ImageContainer2 = styled.div<ThemeSet>`
     padding-right: 1rem;
   }
 
+  @media ${(props) => props.minimum} {
+    margin-top: 2rem;
+    > img {
+      width: 12rem;
+      height: 10rem;
+      padding-right: 1rem;
+    }
+  }
+
   @media ${(props) => props.tablet} {
-    grid-row: 4/6;
+    grid-row: 5/6;
     grid-column: 3/4;
+    margin-top: 0rem;
+    margin-bottom: 1.5rem;
     > img {
       display: flex;
-      width: 14rem;
-      height: 11rem;
+      width: 15rem;
+      height: 13rem;
       padding-right: 1rem;
     }
   }
@@ -507,6 +538,15 @@ const BtnContainer = styled.div<ThemeSet>`
       background: #1a237e;
       color: white;
       font-weight: bold;
+    }
+  }
+
+  @media ${(props) => props.minimum} {
+    margin-bottom: 1.5rem;
+    > button {
+      font-size: 0.9rem;
+      width: 9rem;
+      height: 2rem;
     }
   }
 

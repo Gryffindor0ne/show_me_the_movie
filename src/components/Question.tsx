@@ -13,7 +13,12 @@ const QuestionContainer = styled.section<ThemeSet>`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+
+  @media ${(props) => props.tablet} {
+    grid-gap: 1rem;
+    grid-template-rows: repeat(4, 10rem);
+    grid-template-columns: repeat(1, 28rem);
+  }
 
   @media ${(props) => props.desktop} {
     grid-gap: 1rem;
@@ -45,6 +50,10 @@ const Progress = styled.div<ThemeSet>`
   width: 230px;
   padding: 1px;
   margin-bottom: 3rem;
+
+  @media ${(props) => props.tablet} {
+    width: 300px;
+  }
 
   @media ${(props) => props.desktop} {
     width: 300px;
@@ -103,6 +112,10 @@ const Text = styled.div<ThemeSet>`
   font-size: 1.2rem;
   margin-bottom: 2rem;
 
+  @media ${(props) => props.tablet} {
+    font-size: 1.7rem;
+  }
+
   @media ${(props) => props.desktop} {
     font-size: 1.7rem;
   }
@@ -132,6 +145,12 @@ const Btn = styled.button<ThemeSet>`
     color: white;
     background-color: #1a237e;
     font-weight: bold;
+  }
+
+  @media ${(props) => props.tablet} {
+    width: 15rem;
+    height: 2.9rem;
+    font-size: 1rem;
   }
 
   @media ${(props) => props.desktop} {
