@@ -12,7 +12,7 @@ const Section = styled.section`
   align-items: center;
 
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
 `;

@@ -8,7 +8,7 @@ const QuestionContainer = styled.section<ThemeSet>`
   margin: 1rem;
   display: grid;
   grid-gap: 1rem;
-  grid-template-rows: repeat(4, 6.5rem);
+  grid-template-rows: repeat(4, 6rem);
   grid-template-columns: repeat(1, 17rem);
   justify-content: center;
   align-items: center;
@@ -138,9 +138,9 @@ const Btn = styled.button<ThemeSet>`
   border: none;
   border-radius: 25px;
   width: 11rem;
-  height: 2.5rem;
+  height: 2.2rem;
   font-size: 1rem;
-  margin: 1rem;
+  margin: 0.5rem;
   :hover {
     color: white;
     background-color: #1a237e;
@@ -151,12 +151,14 @@ const Btn = styled.button<ThemeSet>`
     width: 15rem;
     height: 2.9rem;
     font-size: 1rem;
+    margin: 1rem;
   }
 
   @media ${(props) => props.desktop} {
     width: 15rem;
     height: 2.9rem;
     font-size: 1rem;
+    margin: 1rem;
   }
 `;
 

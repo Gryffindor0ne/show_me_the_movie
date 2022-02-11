@@ -8,7 +8,7 @@ const Section = styled.section<ThemeSet>`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -17,7 +17,7 @@ const MainContainer = styled.section<ThemeSet>`
   display: grid;
   color: white;
   margin: 1rem;
-  grid-template-rows: repeat(5, 6.3rem);
+  grid-template-rows: repeat(5, 6rem);
   grid-template-columns: auto;
 
   @media ${(props) => props.tablet} {
@@ -79,7 +79,7 @@ const TextBox = styled.div<ThemeSet>`
     font-size: 1rem;
     font-family: "EliceDigitalBaeum_Regular";
     color: #1a237e;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.2rem;
   }
 
   @media ${(props) => props.tablet} {
@@ -109,9 +109,9 @@ const Image = styled.img<ThemeSet>`
   grid-row: 3/5;
   grid-column: 1/1;
 
-  width: 17rem;
-  height: 14rem;
-  padding-top: 2rem;
+  width: 16rem;
+  height: 13rem;
+  padding-top: 1rem;
 
   @media ${(props) => props.minimum} {
     width: 15rem;
@@ -201,10 +201,8 @@ export default function Home() {
           <div>THE MOVIE</div>
         </TitleBox>
         <TextBox {...theme}>
-          <div>지금 뭘 볼까?</div>
-          <div>고민하는 이 순간!</div>
-          <div>최애 리스트 중에서</div>
-          <div>하나를 골라보자!</div>
+          <div>지금 뭘 볼까? 고민하는 이 순간!</div>
+          <div>최애 리스트 중에서 하나를 골라보자!</div>
         </TextBox>
         <BtnCotainer {...theme}>
           <button
