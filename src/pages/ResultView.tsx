@@ -638,14 +638,14 @@ export default function ResultView() {
       .writeText(`${copyUrl}`)
       .then(() => {
         Swal.fire({
-          title: "Link Saved Success!",
+          title: "Success!",
           text: "링크가 저장되었습니다!",
           icon: "success",
         });
       })
       .catch(() => {
         Swal.fire({
-          title: "Link Saved Failed!",
+          title: "Failed!",
           text: "링크 저장에 실패하였습니다!",
           icon: "error",
         });
