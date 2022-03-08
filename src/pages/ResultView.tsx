@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import LoadingIndicator from "../components/Loading";
 import { IoMdStar, IoMdStarHalf } from "react-icons/io";
 import { theme, ThemeSet } from "../theme";
@@ -622,10 +622,11 @@ export default function ResultView() {
             )
           );
         } else {
-          console.error("Inner Error");
+          throw new Error("Network Error");
         }
-      } catch {
-        console.error("Outer Error");
+      } catch (err) {
+        const errors = err as AxiosError;
+        console.log(`Error: ${errors?.response?.data}`);
       }
       setTimeout(() => setIsLoading(false), 1500);
     };
